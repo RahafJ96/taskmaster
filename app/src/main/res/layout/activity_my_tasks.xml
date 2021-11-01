@@ -11,7 +11,7 @@
         android:layout_width="130dp"
         android:layout_height="44dp"
         android:text="My Tasks"
-        android:textColor="@color/white"
+        android:textColor="@color/teal_700"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +43,11 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/add_task"
         android:onClick="add"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/teal_700"
         />
 
     <Button
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/teal_700"
 
         android:id="@+id/allTasks"
         android:layout_width="160dp"
