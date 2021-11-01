@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MyTasks extends AppCompatActivity {
 
@@ -11,16 +12,9 @@ public class MyTasks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tasks);
-
+        Intent myIntent = getIntent();
+        ((TextView)findViewById(R.id.textView8)).setText(myIntent.getExtras().getString("task"));
     }
 
-    public void add(View view) {
-        Intent intent=new Intent(MyTasks.this, AddTask.class);
-        startActivity(intent);
-    }
 
-    public void all(View view) {
-        Intent intent=new Intent(MyTasks.this,MainActivity.class);
-        startActivity(intent);
-    }
 }
