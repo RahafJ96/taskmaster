@@ -41,7 +41,7 @@ public class AllTasks extends AppCompatActivity {
         RecyclerView allStudnetRecyclerView = findViewById(R.id.recTask);
         allStudnetRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        allStudnetRecyclerView.setAdapter(new TaskAdapter(ArrayList<EntityTask> taskData));
+        allStudnetRecyclerView.setAdapter(new TaskAdapter((ArrayList<EntityTask>) taskData));
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
