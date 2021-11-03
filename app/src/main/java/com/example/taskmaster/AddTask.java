@@ -11,17 +11,23 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddTask extends AppCompatActivity {
 
+    String assigned="";
+    RadioGroup radioGroup;
+    RadioButton selectedRadioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        radioGroup = (RadioGroup) findViewById(R.id.radio);
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -30,7 +36,7 @@ public class AddTask extends AppCompatActivity {
             case android.R.id.home:
                 Intent i=new Intent(AddTask.this,MyTasks.class);
                 startActivity(i);
-                Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Button is pressed!",Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -46,7 +52,7 @@ public class AddTask extends AppCompatActivity {
 
         TextView count=(TextView)findViewById(R.id.counter);
         if(text.isEmpty() && text2.isEmpty()){
-            Toast message= Toast.makeText(getBaseContext(),"you should fill both fields first!",Toast.LENGTH_LONG);
+            Toast message= Toast.makeText(getBaseContext(),"fill the field, please!",Toast.LENGTH_LONG);
             message.show();
         }
         else{
@@ -55,7 +61,7 @@ public class AddTask extends AppCompatActivity {
             i.putExtra("edit1",text);
             i.putExtra("edit2",text2);
             i.putExtra("counter",counter);
-            Toast message= Toast.makeText(getBaseContext(),"you have successfully add your task!",Toast.LENGTH_LONG);
+            Toast message= Toast.makeText(getBaseContext(),"The task is added!",Toast.LENGTH_LONG);
             count.setText("total:"+counter);
             startActivity(i);
             message.show();

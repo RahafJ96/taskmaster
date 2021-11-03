@@ -24,23 +24,25 @@ public class TaskDetails extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-
             String t = extras.getString("titles");
             String body = extras.getString("body");
             String status = extras.getString("status");
 
 
-            if (status.equalsIgnoreCase("completed"))
-                st.setTextColor(Color.GREEN);
-            else if (status.equalsIgnoreCase("in progress"))
-                st.setTextColor(Color.YELLOW);
-            else if (status.equalsIgnoreCase("assigned"))
-                st.setTextColor(Color.RED);
-            else
-                st.setTextColor(Color.CYAN);
-            bodies.setText(body);
-            st.setText(status);
-            title.setText(t);
+            if(bodies!=null) {
+
+                if (status.equalsIgnoreCase("completed"))
+                    st.setTextColor(Color.GREEN);
+                else if (status.equalsIgnoreCase("in progress"))
+                    st.setTextColor(Color.YELLOW);
+                else if (status.equalsIgnoreCase("assigned"))
+                    st.setTextColor(Color.RED);
+                else
+                    st.setTextColor(Color.CYAN);
+                bodies.setText(body);
+                st.setText(status);
+                title.setText(t);
+            }
         }
 
         ActionBar actionBar = getSupportActionBar();
@@ -49,11 +51,10 @@ public class TaskDetails extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-
             case android.R.id.home:
                 Intent i=new Intent(TaskDetails.this,AllTasks.class);
                 startActivity(i);
-                Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Button is pressed!",Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
