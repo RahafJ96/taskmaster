@@ -2,4 +2,9 @@
     <string name="app_name">Task Master</string>
     <string name="add_task">Add Task</string>
     <string name="all_tasks">All Tasks</string>
+    <string name="lorem">Lorem Ipsum </string>
+    <string name="sleep">Sleep</string>
+    <string name="coding">coding</string>
+    <string name="ctf">competition</string>
+    <string name="settings">Settings</string>
 </resources>
