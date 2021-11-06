@@ -16,7 +16,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.taskmaster.Database.TaskDatabase;
+import com.example.taskmaster.Entity.TaskEntity;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class AllTasks extends AppCompatActivity {
 
@@ -33,16 +37,18 @@ public class AllTasks extends AppCompatActivity {
 //            textView.setText(title +"\n"+description);
 //        }
 
-        ArrayList<Task>taskData=new ArrayList<>();
-        taskData.add(new Task("Study","study for mock interview  "," In Progress"));
-        taskData.add(new Task("Fun","Watch Anime  "," Assigned"));
-        taskData.add(new Task("Read","finish the Book  "," Completed"));
-        taskData.add(new Task("Work","work on Hash tables "," In Progress"));
+//        ArrayList<Task>taskData=new ArrayList<>();
+//        taskData.add(new Task("Study","study for mock interview  "," In Progress"));
+//        taskData.add(new Task("Fun","Watch Anime  "," Assigned"));
+//        taskData.add(new Task("Read","finish the Book  "," Completed"));
+//        taskData.add(new Task("Work","work on Hash tables "," In Progress"));
+        List<TaskEntity> taskData = TaskDatabase.getInstance(getApplicationContext()).taskDAO().getAll();
+
         RecyclerView allStudentRecyclerView = findViewById(R.id.recTask);
 
         allStudentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        allStudentRecyclerView.setAdapter(new TaskAdapter(taskData));
+        allStudentRecyclerView.setAdapter(new TaskAdapter((ArrayList<TaskEntity>) taskData));
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);

@@ -8,14 +8,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddTask extends AppCompatActivity {
+import com.example.taskmaster.Database.TaskDatabase;
+import com.example.taskmaster.Entity.TaskEntity;
 
+public class AddTask extends AppCompatActivity {
+    String assigned="";
+    RadioGroup radioGroup;
+    RadioButton selectedRadioButton;
+    //    SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "com.example.taskmaster" ;
 
     @Override
@@ -24,6 +33,7 @@ public class AddTask extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        radioGroup = (RadioGroup) findViewById(R.id.radio);
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -72,5 +82,19 @@ public class AddTask extends AppCompatActivity {
             editor.apply();
         }
 
+        // get the selected RadioButton of the group
+        selectedRadioButton  = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
+        //get RadioButton text
+        String yourVote = selectedRadioButton.getText().toString();
+        // display it as Toast to the user
+        Toast.makeText(AddTask.this, "Selected Radio Button is:" + yourVote , Toast.LENGTH_LONG).show();
+        Log.v("selected radio ==>",yourVote);
+
+
+        //Save a TaskModel
+        TaskEntity taskModel = new TaskEntity(text, text2, yourVote);
+        TaskDatabase.getInstance(getApplicationContext()).taskDAO().insert(taskModel);
+        Intent intent = new Intent(AddTask.this, AllTasks.class);
+        startActivity(intent);
     }
 }
