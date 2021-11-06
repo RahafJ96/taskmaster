@@ -64,7 +64,59 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit1" />
+        app:layout_constraintTop_toBottomOf="@+id/edit1"
+        app:layout_constraintVertical_bias="0.741" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.672">
+
+        <RadioButton
+            android:id="@+id/completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20px"
+            android:text="completed"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/in_progress"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:padding="20px"
+            android:text="in progress"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/new_task"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:padding="20px"
+            android:text="New"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/assigned"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:padding="20px"
+            android:text="assigned"
+            android:textColor="@color/white" />
+    </RadioGroup>
 
     <Button
 
@@ -84,12 +136,11 @@
         android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="28dp"
         android:text="Total :0"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
