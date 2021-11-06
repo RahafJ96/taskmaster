@@ -5,45 +5,38 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddTask extends AppCompatActivity {
 
-    String assigned="";
-    RadioGroup radioGroup;
-    RadioButton selectedRadioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        radioGroup = (RadioGroup) findViewById(R.id.radio);
     }
-
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
             case android.R.id.home:
                 Intent i=new Intent(AddTask.this,MyTasks.class);
                 startActivity(i);
-                Toast.makeText(this,"Button is pressed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    int counter = 0;
+
+    int counter=0;
 
     public void click(View view) {
+
         EditText editText =(EditText) findViewById(R.id.edit1) ;
         String text=editText.getText().toString();
 
@@ -52,7 +45,7 @@ public class AddTask extends AppCompatActivity {
 
         TextView count=(TextView)findViewById(R.id.counter);
         if(text.isEmpty() && text2.isEmpty()){
-            Toast message= Toast.makeText(getBaseContext(),"fill the field, please!",Toast.LENGTH_LONG);
+            Toast message= Toast.makeText(getBaseContext(),"you should fill both fields first!",Toast.LENGTH_LONG);
             message.show();
         }
         else{
@@ -60,18 +53,12 @@ public class AddTask extends AppCompatActivity {
             Intent i=new Intent(AddTask.this,AllTasks.class);
             i.putExtra("edit1",text);
             i.putExtra("edit2",text2);
-            i.putExtra("counter",counter);
-            Toast message= Toast.makeText(getBaseContext(),"The task is added!",Toast.LENGTH_LONG);
+            Toast message= Toast.makeText(getBaseContext(),"you have successfully add your task!",Toast.LENGTH_LONG);
             count.setText("total:"+counter);
+
             startActivity(i);
             message.show();
-
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("title",text );
-            editor.putString("description",text2 );
-            editor.putString("counter","total:"+counter );
-            editor.apply();
         }
+
     }
 }

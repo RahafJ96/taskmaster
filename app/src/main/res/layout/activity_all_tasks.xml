@@ -4,112 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple"
     tools:context=".AllTasks">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="336dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="23dp"
-        android:src="@drawable/pic3"
+        android:layout_width="400dp"
+        android:layout_height="213dp"
+        android:src="@drawable/tasks"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recTask"
-        android:layout_width="304dp"
-        android:layout_height="191dp"
-
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
-        app:layout_constraintVertical_bias="0.067" />
-
-
-    <!--    <TextView-->
-<!--        android:id="@+id/counter"-->
-<!--        android:layout_width="64dp"-->
-<!--        android:layout_height="38dp"-->
-<!--        android:text="total:0"-->
-<!--        android:textColor="@color/white"-->
-<!--        tools:layout_editor_absoluteX="331dp"-->
-<!--        tools:layout_editor_absoluteY="677dp" />-->
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Tasks: "
-        android:textColor="#2196F3"
+        android:layout_marginBottom="84dp"
+        android:text="Your Tasks:-"
+        android:textColor="@color/white"
         android:textFontWeight="@integer/material_motion_duration_medium_1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/text1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="405dp"
-        android:layout_height="46dp"
-        android:textColor="#732B43"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="176dp"
+        android:background="@color/yellow"
+        android:padding="10dp"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="160dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="128dp"
-        android:backgroundTint="#2196F3"
-        android:onClick="ctf"
-        android:text="@string/ctf"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="160dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="128dp"
-        android:backgroundTint="#2196F3"
-        android:onClick="code"
-        android:text="@string/coding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recTask" />
-
-<!--    <Button-->
-<!--        android:id="@+id/button4"-->
-<!--        android:layout_width="160dp"-->
-<!--        android:layout_height="76dp"-->
-<!--        android:layout_marginStart="124dp"-->
-<!--        android:backgroundTint="@color/purple_200"-->
-<!--        android:onClick="sleep"-->
-<!--        android:text="@string/sleep"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/counter"-->
-<!--        app:layout_constraintHorizontal_bias="0.514"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/button3"-->
-<!--        app:layout_constraintVertical_bias="0.692" />-->
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
