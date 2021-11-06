@@ -51,7 +51,9 @@ In this lab, I added a Room database to save the tasks and the details of tasks 
 
 #### Add Task Activity
 On this page, Added a new field in which can the user writes the state of the task.
+
 ![home](screenshots/lab29.PNG)
+
 Also added a spinner in which the user can select one of the choices for the image of the task.
 
 #### All Tasks
@@ -62,5 +64,6 @@ This is the home page and it contains tasks and each task has an image depends o
 
 #### The added Task
 Refactored this page to show all user tasks.
+
 ![lab29-addedTask](screenshots/lab29-details.PNG)
 
