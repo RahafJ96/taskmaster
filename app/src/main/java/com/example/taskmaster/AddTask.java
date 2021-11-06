@@ -3,7 +3,9 @@ package com.example.taskmaster;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.preference.PreferenceManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddTask extends AppCompatActivity {
+
+    public static final String MyPREFERENCES = "com.example.taskmaster" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,7 @@ public class AddTask extends AppCompatActivity {
             case android.R.id.home:
                 Intent i=new Intent(AddTask.this,MyTasks.class);
                 startActivity(i);
-                Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Button pressed!",Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -53,11 +57,19 @@ public class AddTask extends AppCompatActivity {
             Intent i=new Intent(AddTask.this,AllTasks.class);
             i.putExtra("edit1",text);
             i.putExtra("edit2",text2);
-            Toast message= Toast.makeText(getBaseContext(),"you have successfully add your task!",Toast.LENGTH_LONG);
+            i.putExtra("counter",counter);
+            Toast message= Toast.makeText(getBaseContext(),"The task has been added successfully!",Toast.LENGTH_LONG);
             count.setText("total:"+counter);
 
             startActivity(i);
             message.show();
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("title",text );
+            editor.putString("description",text2 );
+            editor.putString("counter","total:"+counter );
+            editor.apply();
         }
 
     }
