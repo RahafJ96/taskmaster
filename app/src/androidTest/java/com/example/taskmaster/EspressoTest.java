@@ -27,8 +27,9 @@ public class EspressoTest {
 
     @Test
     public void assertTextChanged() {
-
-        onView(withId(R.id.edit1)).perform(typeText("Test"), closeSoftKeyboard());
+//        try (ActivityScenario<MainActivity> ignored = ActivityScenario.launch(MainActivity.class)) {
+        // type text and then press change text button
+        onView(withId(R.id.edit1)).perform(typeText("Hello"), closeSoftKeyboard());
         onView(withId(R.id.edit2)).perform(typeText("App"), closeSoftKeyboard());
         onView(withId(R.id.in_progress))
                 .perform(click());
@@ -42,6 +43,9 @@ public class EspressoTest {
         onView(withId(R.id.assigned))
                 .check(matches(isNotChecked()));
         onView(withId(R.id.button)).perform(click());
+
+        // check that the text was changed when the button was clicked
+//        }
 
     }
 
