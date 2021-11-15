@@ -1,6 +1,6 @@
 # taskmaster
 
-### Lab 26 - Beginning TaskMaster
+# Lab 26 - Beginning TaskMaster
 #### The main page
 should have a heading at the top of the page, an image to mock the “my tasks” view, and buttons at the bottom of the page to allow going to the “add tasks” and “all tasks” page.
 
@@ -17,7 +17,7 @@ The all tasks page should just be an image with a back button; it needs no funct
 
 ---
 
-### Lab 27 - 
+# Lab 27 - 
 ### Task Detail Page
 Create a Task Detail page. It should have a title at the top of the page, and a Lorem Ipsum description.
 ![myTask](screenshots/my-tasks-27.PNG)
@@ -33,7 +33,7 @@ The homepage should also contain a button to visit the Settings page, and once t
 
 --- 
 
-### Lab 28 - RecyclerView
+# Lab 28 - RecyclerView
 *refactor  homepage to look snazzy, with a RecyclerView full of Task data.
 #### Homepage
 Refactor your homepage to use a RecyclerView for displaying Task data. This should have hardcoded Task data for now.
@@ -46,7 +46,7 @@ Refactor your homepage to use a RecyclerView for displaying Task data. This shou
 
 ---
 
-### Lab 29 - Room
+# Lab 29 - Room
 In this lab, I added a Room database to save the tasks and the details of tasks and get data from it, and let the recycler view take the data from the room database.
 
 #### Add Task Activity
@@ -67,3 +67,12 @@ Refactored this page to show all user tasks.
 
 ![lab29-addedTask](screenshots/lab29-details.PNG)
 
+
+# Lab 31 - Espresso Test
+- In This lab I tested the code by using Espresso test.
+
+I created a test to change the name
+
+    - `changeName()`
+
+![changeName](screenshots/lab31.PNG)
