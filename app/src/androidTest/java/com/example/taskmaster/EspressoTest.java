@@ -35,19 +35,4 @@ public class EspressoTest {
 //        }
 
     }
-
-//    @Rule
-//    public ActivityScenarioRule<MainActivity> rule2 = new ActivityScenarioRule<>(MainActivity.class);
-//
-//    @Test
-//    public void addTask() {
-////        try (ActivityScenario<MainActivity> ignored = ActivityScenario.launch(MainActivity.class)) {
-//        onView(withId(R.id.username)).perform(typeText("sara"), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText("sara@gmail.com"), closeSoftKeyboard());
-//        onView(withId(R.id.editText)).perform(typeText("3"), closeSoftKeyboard());
-//        onView(withId(R.id.button)).perform(click());
-////        }
-//    }
-
-
 }
