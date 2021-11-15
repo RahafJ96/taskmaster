@@ -69,10 +69,10 @@ Refactored this page to show all user tasks.
 
 
 # Lab 31 - Espresso Test
-- In This lab I tested the code by using Espresso test.
+In This lab I tested the code by using Espresso test.
 
 I created a test to change the name
 
-    - `changeName()`
+- `changeName()`
 
 ![changeName](screenshots/lab31.PNG)
