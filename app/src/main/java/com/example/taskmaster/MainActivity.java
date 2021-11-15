@@ -16,6 +16,14 @@ public class MainActivity extends OnboarderActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        try {
+//            // Add this line to add the AWSApiPlugin plugins
+//            Amplify.addPlugin(new AWSApiPlugin());
+//            Amplify.configure(getApplicationContext());
+//            Log.i("MyAmplifyApp", "Initialized Amplify");
+//        } catch (AmplifyException error) {
+//            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+//        }
         super.onCreate(savedInstanceState);
         onboarderPages = new ArrayList<OnboarderPage>();
 
