@@ -8,7 +8,10 @@ import java.util.Objects;
 
 import androidx.core.util.ObjectsCompat;
 
+import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
+import com.amplifyframework.core.model.ModelOperation;
+import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
@@ -16,28 +19,36 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the Todo type in your schema. */
+/** This is an auto generated class representing the Taskmaster type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Todos")
-public final class Todo implements Model {
-  public static final QueryField ID = field("Todo", "id");
-  public static final QueryField NAME = field("Todo", "name");
-  public static final QueryField DESCRIPTION = field("Todo", "description");
+@ModelConfig(pluralName = "Taskmasters", authRules = {
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+})
+public final class Taskmaster implements Model {
+  public static final QueryField ID = field("Taskmaster", "id");
+  public static final QueryField TITLE = field("Taskmaster", "title");
+  public static final QueryField BODY = field("Taskmaster", "body");
+  public static final QueryField STATUS = field("Taskmaster", "status");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String", isRequired = true) String name;
-  private final @ModelField(targetType="String") String description;
+  private final @ModelField(targetType="String", isRequired = true) String title;
+  private final @ModelField(targetType="String") String body;
+  private final @ModelField(targetType="Status", isRequired = true) Status status;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
       return id;
   }
   
-  public String getName() {
-      return name;
+  public String getTitle() {
+      return title;
   }
   
-  public String getDescription() {
-      return description;
+  public String getBody() {
+      return body;
+  }
+  
+  public Status getStatus() {
+      return status;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -48,10 +59,11 @@ public final class Todo implements Model {
       return updatedAt;
   }
   
-  private Todo(String id, String name, String description) {
+  private Taskmaster(String id, String title, String body, Status status) {
     this.id = id;
-    this.name = name;
-    this.description = description;
+    this.title = title;
+    this.body = body;
+    this.status = status;
   }
   
   @Override
@@ -61,12 +73,13 @@ public final class Todo implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      Todo todo = (Todo) obj;
-      return ObjectsCompat.equals(getId(), todo.getId()) &&
-              ObjectsCompat.equals(getName(), todo.getName()) &&
-              ObjectsCompat.equals(getDescription(), todo.getDescription()) &&
-              ObjectsCompat.equals(getCreatedAt(), todo.getCreatedAt()) &&
-              ObjectsCompat.equals(getUpdatedAt(), todo.getUpdatedAt());
+      Taskmaster taskmaster = (Taskmaster) obj;
+      return ObjectsCompat.equals(getId(), taskmaster.getId()) &&
+              ObjectsCompat.equals(getTitle(), taskmaster.getTitle()) &&
+              ObjectsCompat.equals(getBody(), taskmaster.getBody()) &&
+              ObjectsCompat.equals(getStatus(), taskmaster.getStatus()) &&
+              ObjectsCompat.equals(getCreatedAt(), taskmaster.getCreatedAt()) &&
+              ObjectsCompat.equals(getUpdatedAt(), taskmaster.getUpdatedAt());
       }
   }
   
@@ -74,8 +87,9 @@ public final class Todo implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getName())
-      .append(getDescription())
+      .append(getTitle())
+      .append(getBody())
+      .append(getStatus())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -85,17 +99,18 @@ public final class Todo implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("Todo {")
+      .append("Taskmaster {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("name=" + String.valueOf(getName()) + ", ")
-      .append("description=" + String.valueOf(getDescription()) + ", ")
+      .append("title=" + String.valueOf(getTitle()) + ", ")
+      .append("body=" + String.valueOf(getBody()) + ", ")
+      .append("status=" + String.valueOf(getStatus()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
       .toString();
   }
   
-  public static NameStep builder() {
+  public static TitleStep builder() {
       return new Builder();
   }
   
@@ -108,7 +123,7 @@ public final class Todo implements Model {
    * @return an instance of this model with only ID populated
    * @throws IllegalArgumentException Checks that ID is in the proper format
    */
-  public static Todo justId(String id) {
+  public static Taskmaster justId(String id) {
     try {
       UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
     } catch (Exception exception) {
@@ -118,8 +133,9 @@ public final class Todo implements Model {
               "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
-    return new Todo(
+    return new Taskmaster(
       id,
+      null,
       null,
       null
     );
@@ -127,45 +143,60 @@ public final class Todo implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      name,
-      description);
+      title,
+      body,
+      status);
   }
-  public interface NameStep {
-    BuildStep name(String name);
+  public interface TitleStep {
+    StatusStep title(String title);
+  }
+  
+
+  public interface StatusStep {
+    BuildStep status(Status status);
   }
   
 
   public interface BuildStep {
-    Todo build();
+    Taskmaster build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep description(String description);
+    BuildStep body(String body);
   }
   
 
-  public static class Builder implements NameStep, BuildStep {
+  public static class Builder implements TitleStep, StatusStep, BuildStep {
     private String id;
-    private String name;
-    private String description;
+    private String title;
+    private Status status;
+    private String body;
     @Override
-     public Todo build() {
+     public Taskmaster build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new Todo(
+        return new Taskmaster(
           id,
-          name,
-          description);
+          title,
+          body,
+          status);
     }
     
     @Override
-     public BuildStep name(String name) {
-        Objects.requireNonNull(name);
-        this.name = name;
+     public StatusStep title(String title) {
+        Objects.requireNonNull(title);
+        this.title = title;
         return this;
     }
     
     @Override
-     public BuildStep description(String description) {
-        this.description = description;
+     public BuildStep status(Status status) {
+        Objects.requireNonNull(status);
+        this.status = status;
+        return this;
+    }
+    
+    @Override
+     public BuildStep body(String body) {
+        this.body = body;
         return this;
     }
     
@@ -192,20 +223,26 @@ public final class Todo implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String description) {
+    private CopyOfBuilder(String id, String title, String body, Status status) {
       super.id(id);
-      super.name(name)
-        .description(description);
+      super.title(title)
+        .status(status)
+        .body(body);
     }
     
     @Override
-     public CopyOfBuilder name(String name) {
-      return (CopyOfBuilder) super.name(name);
+     public CopyOfBuilder title(String title) {
+      return (CopyOfBuilder) super.title(title);
     }
     
     @Override
-     public CopyOfBuilder description(String description) {
-      return (CopyOfBuilder) super.description(description);
+     public CopyOfBuilder status(Status status) {
+      return (CopyOfBuilder) super.status(status);
+    }
+    
+    @Override
+     public CopyOfBuilder body(String body) {
+      return (CopyOfBuilder) super.body(body);
     }
   }
   

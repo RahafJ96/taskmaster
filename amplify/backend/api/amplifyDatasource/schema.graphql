@@ -2,7 +2,6 @@ enum Status {
   NEW
   COMPLETED
   IN_PROGRESS
-  NEWVALUE
 }
 
 type Taskmaster @model @auth(rules: [{allow: public}]) {

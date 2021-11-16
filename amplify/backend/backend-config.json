@@ -9,6 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 35,
+              "apiKeyExpirationDate": "2021-12-21T08:43:08.417Z",
               "description": "rahafkey"
             }
           },

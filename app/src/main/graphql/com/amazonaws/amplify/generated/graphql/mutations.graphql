@@ -7,6 +7,9 @@ mutation CreateTodo(
     id
     name
     description
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -19,6 +22,9 @@ mutation UpdateTodo(
     id
     name
     description
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
@@ -31,6 +37,9 @@ mutation DeleteTodo(
     id
     name
     description
+    _version
+    _deleted
+    _lastChangedAt
     createdAt
     updatedAt
   }
