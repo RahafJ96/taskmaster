@@ -6,10 +6,10 @@
             "awsAPIPlugin": {
                 "taskmaster": {
                     "endpointType": "GraphQL",
-                    "endpoint": "https://w3atlvh7t5hnzaqd5fg5op5key.appsync-api.eu-central-1.amazonaws.com/graphql",
+                    "endpoint": "https://ga7vrqr35zaeppgcj6qhncqdsm.appsync-api.eu-central-1.amazonaws.com/graphql",
                     "region": "eu-central-1",
                     "authorizationType": "API_KEY",
-                    "apiKey": "da2-yaalg2kvjzhknjrzsc3rdotw3y"
+                    "apiKey": "da2-pg7n2stp6jfgdnluf5imoeidoa"
                 }
             }
         }

@@ -3,5 +3,10 @@
     "configLevel": "project",
     "useProfile": false,
     "awsConfigFilePath": "/home/rahafj96/.amplify/awscloudformation/UqrVkc7I0O"
+  },
+  "devx": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/home/rahafj96/.amplify/awscloudformation/1NV5cuGwz2"
   }
 }
