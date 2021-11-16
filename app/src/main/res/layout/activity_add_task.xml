@@ -49,8 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-
-
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,6 +93,20 @@
             android:textColor="@color/white" />
 
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.914" />
+
     <EditText
 
         android:id="@+id/edit2"
@@ -112,7 +124,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit1"
         app:layout_constraintVertical_bias="0.741" />
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/IdProf"
+        android:layout_width="113dp"
+        android:layout_height="68dp"
+        android:background="@drawable/edit_text_border"
+        android:src="@android:drawable/ic_menu_upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.801"
+        android:onClick="upload"
+        />
 
+    <Switch
+        android:id="@+id/simpleSwitch"
+        android:layout_width="107dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
     <Button
         android:id="@+id/button"
         android:layout_width="122dp"

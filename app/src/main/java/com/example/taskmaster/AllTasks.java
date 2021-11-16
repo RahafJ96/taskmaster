@@ -1,97 +1,157 @@
 package com.example.taskmaster;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.annotation.*;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.*;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Taskmaster;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.example.taskmaster.Database.TaskDatabase;
 import com.example.taskmaster.Entity.TaskEntity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class AllTasks extends AppCompatActivity {
 
+    Handler handler;
+    List<TaskEntity> allTasks = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
-//        Bundle extras = getIntent().getExtras();
-//        if (extras != null) {
-//            String title = extras.getString("edit1");
-//            String description = extras.getString("edit2");
-//            TextView textView=(TextView)findViewById(R.id.text1);
-//
-//            textView.setText(title +"\n"+description);
-//        }
-
-//        ArrayList<Task>taskData=new ArrayList<>();
-//        taskData.add(new Task("Study","study for mock interview  "," In Progress"));
-//        taskData.add(new Task("Fun","Watch Anime  "," Assigned"));
-//        taskData.add(new Task("Read","finish the Book  "," Completed"));
-//        taskData.add(new Task("Work","work on Hash tables "," In Progress"));
-        List<TaskEntity> taskData = TaskDatabase.getInstance(getApplicationContext()).taskDAO().getAll();
-
-        RecyclerView allStudentRecyclerView = findViewById(R.id.recTask);
-
-        allStudentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        allStudentRecyclerView.setAdapter(new TaskAdapter((ArrayList<TaskEntity>) taskData));
         ActionBar actionBar = getSupportActionBar();
-
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+//        if(name.split(".")[1].equals("png")){
+//            ImageView imageView=(ImageView)findViewById(R.id.img);
+//            imageView.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            TextView textView=(TextView) findViewById(R.id.file);
+//            textView.setVisibility(View.VISIBLE);
+//        }
     }
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String title = prefs.getString("title","title");
-        String desc = prefs.getString("description","description");
-        String counter = prefs.getString("counter","total:0");
-        int number=prefs.getInt("number",0);
-        TextView textView=(TextView)findViewById(R.id.text1);
-        TextView counterText=(TextView)findViewById(R.id.counter);
-        textView.setText(title +"\n"+desc);
-        counterText.setText(counter);
-    }
-
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()) {
+
             case android.R.id.home:
                 Intent i=new Intent(AllTasks.this,MyTasks.class);
                 startActivity(i);
-                Toast.makeText(this,"Button pressed!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    public void intentHelper(View view){
-        Intent intent =new Intent(AllTasks.this,TaskDetails.class);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTasks();
 
-        Button b = (Button)view;
-        String buttonText = b.getText().toString();
-        System.out.println(buttonText);
-        intent.putExtra("title",buttonText);
-        startActivity(intent);
+        RecyclerView recyclerView = findViewById(R.id.recTask);
+
+        TaskAdapter newAdapter = new TaskAdapter( getApplicationContext(), (ArrayList<TaskEntity>) allTasks);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(newAdapter);
+
+        handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                newAdapter.setTaskOGList(allTasks);
+                Log.i("Async", allTasks.toString());
+                recyclerView.getAdapter().notifyDataSetChanged();
+                return false;
+            }
+        });
+
     }
-    public void ctf(View view) {intentHelper(view);}
 
-    public void code(View view) {intentHelper(view);}
+    private void getTasks() {
 
-    public void sleep(View view) {intentHelper(view);}
+
+        List<Taskmaster> listOfTasks = new ArrayList<>();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPref", 0);
+        String settingsTeamID = sharedPreferences.getString("teamName",null);
+        Log.i("TeamID", "Settings Team ID ===> " + settingsTeamID);
+
+        if (settingsTeamID == null) {
+
+            Amplify.API.query(
+                    ModelQuery.list(Taskmaster.class),
+                    response -> {
+                        for (Taskmaster task : response.getData()) {
+                            listOfTasks.add(task);
+                        }
+                        Collections.sort(listOfTasks, new Comparator<Taskmaster>() {
+                            @Override
+                            public int compare(Taskmaster task, Taskmaster t1) {
+                                return Long.compare(task.getCreatedAt().toDate().getTime(), t1.getCreatedAt().toDate().getTime());
+                            }
+                        });
+
+                        for (Taskmaster task : listOfTasks
+                        ) {
+                            allTasks.add(new TaskEntity(task.getTitle(), task.getBody(), task.getStatus().name(),task.getTeamId(),task.getS3ImageKey()));
+
+                        }
+
+                        handler.sendEmptyMessage(1);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+        } else {
+            Log.v("inside else =>",settingsTeamID);
+            Amplify.API.query(
+                    ModelQuery.list(Taskmaster.class, Taskmaster.TEAM_ID.contains(settingsTeamID)),
+                    response -> {
+                        for (Taskmaster task : response.getData()) {
+                            listOfTasks.add(task);
+                        }
+                        Collections.sort(listOfTasks, new Comparator<Taskmaster>() {
+                            @Override
+                            public int compare(Taskmaster task, Taskmaster t1) {
+                                return Long.compare(task.getCreatedAt().toDate().getTime(), t1.getCreatedAt().toDate().getTime());
+                            }
+                        });
+
+                        for (Taskmaster task : listOfTasks
+                        ) {
+                            allTasks.add(new TaskEntity(task.getTitle(), task.getBody(), task.getStatus().name(),task.getTeamId(),task.getS3ImageKey()));
+                        }
+
+                        handler.sendEmptyMessage(1);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+
+        }
+
+
+    }
 }
