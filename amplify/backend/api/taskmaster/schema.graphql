@@ -5,7 +5,7 @@ enum Status {
   NEWVALUE
 }
 
-type TaskMaster @model @key(name: "byTeam", fields: ["teamID", "title"]) @auth(rules: [{allow: public}]) {
+type Taskmaster @model @key(name: "byTeam", fields: ["teamID", "title"]) @auth(rules: [{allow: public}]) {
   id: ID!
   title: String!
   body: String
@@ -17,5 +17,5 @@ type TaskMaster @model @key(name: "byTeam", fields: ["teamID", "title"]) @auth(r
 type Team @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
-  tasks: [TaskMaster] @connection(keyName: "byTeam", fields: ["id"])
+  tasks: [Taskmaster] @connection(keyName: "byTeam", fields: ["id"])
 }

@@ -19,7 +19,7 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the TaskMaster type in your schema. */
+/** This is an auto generated class representing the Taskmaster type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "Taskmasters", authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
@@ -88,15 +88,15 @@ public final class Taskmaster implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-          Taskmaster taskMaster = (Taskmaster) obj;
-      return ObjectsCompat.equals(getId(), taskMaster.getId()) &&
-              ObjectsCompat.equals(getTitle(), taskMaster.getTitle()) &&
-              ObjectsCompat.equals(getBody(), taskMaster.getBody()) &&
-              ObjectsCompat.equals(getStatus(), taskMaster.getStatus()) &&
-              ObjectsCompat.equals(getS3ImageKey(), taskMaster.getS3ImageKey()) &&
-              ObjectsCompat.equals(getTeamId(), taskMaster.getTeamId()) &&
-              ObjectsCompat.equals(getCreatedAt(), taskMaster.getCreatedAt()) &&
-              ObjectsCompat.equals(getUpdatedAt(), taskMaster.getUpdatedAt());
+      Taskmaster taskmaster = (Taskmaster) obj;
+      return ObjectsCompat.equals(getId(), taskmaster.getId()) &&
+              ObjectsCompat.equals(getTitle(), taskmaster.getTitle()) &&
+              ObjectsCompat.equals(getBody(), taskmaster.getBody()) &&
+              ObjectsCompat.equals(getStatus(), taskmaster.getStatus()) &&
+              ObjectsCompat.equals(getS3ImageKey(), taskmaster.getS3ImageKey()) &&
+              ObjectsCompat.equals(getTeamId(), taskmaster.getTeamId()) &&
+              ObjectsCompat.equals(getCreatedAt(), taskmaster.getCreatedAt()) &&
+              ObjectsCompat.equals(getUpdatedAt(), taskmaster.getUpdatedAt());
       }
   }
   
@@ -188,7 +188,7 @@ public final class Taskmaster implements Model {
   
 
   public interface BuildStep {
-      Taskmaster build();
+    Taskmaster build();
     BuildStep id(String id) throws IllegalArgumentException;
     BuildStep body(String body);
     BuildStep s3ImageKey(String s3ImageKey);

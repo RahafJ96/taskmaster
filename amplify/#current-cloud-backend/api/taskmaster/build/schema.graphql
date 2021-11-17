@@ -1,7 +1,28 @@
-type Todo {
+enum Status {
+  NEW
+  COMPLETED
+  IN_PROGRESS
+  NEWVALUE
+}
+
+type Taskmaster {
+  id: ID!
+  title: String!
+  body: String
+  status: Status!
+  s3ImageKey: String
+  teamID: ID!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Team {
   id: ID!
   name: String!
-  description: String
+  tasks(title: ModelStringKeyConditionInput, filter: ModelTaskmasterFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTaskmasterConnection
   _version: Int!
   _deleted: Boolean
   _lastChangedAt: AWSTimestamp!
@@ -14,8 +35,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelTodoConnection {
-  items: [Todo!]!
+type ModelTaskmasterConnection {
+  items: [Taskmaster!]!
   nextToken: String
   startedAt: AWSTimestamp
 }
@@ -93,13 +114,21 @@ input ModelSizeInput {
   between: [Int]
 }
 
-input ModelTodoFilterInput {
+input ModelStatusInput {
+  eq: Status
+  ne: Status
+}
+
+input ModelTaskmasterFilterInput {
   id: ModelIDInput
-  name: ModelStringInput
-  description: ModelStringInput
-  and: [ModelTodoFilterInput]
-  or: [ModelTodoFilterInput]
-  not: ModelTodoFilterInput
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelStatusInput
+  s3ImageKey: ModelStringInput
+  teamID: ModelIDInput
+  and: [ModelTaskmasterFilterInput]
+  or: [ModelTaskmasterFilterInput]
+  not: ModelTaskmasterFilterInput
 }
 
 enum ModelAttributeTypes {
@@ -116,46 +145,112 @@ enum ModelAttributeTypes {
 }
 
 type Query {
-  syncTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTodoConnection
-  getTodo(id: ID!): Todo
-  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  syncTaskmasters(filter: ModelTaskmasterFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTaskmasterConnection
+  getTaskmaster(id: ID!): Taskmaster
+  listTaskmasters(filter: ModelTaskmasterFilterInput, limit: Int, nextToken: String): ModelTaskmasterConnection
+  syncTeams(filter: ModelTeamFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTeamConnection
+  getTeam(id: ID!): Team
+  listTeams(filter: ModelTeamFilterInput, limit: Int, nextToken: String): ModelTeamConnection
 }
 
-input CreateTodoInput {
+input CreateTaskmasterInput {
   id: ID
-  name: String!
-  description: String
+  title: String!
+  body: String
+  status: Status!
+  s3ImageKey: String
+  teamID: ID!
   _version: Int
 }
 
-input UpdateTodoInput {
+input UpdateTaskmasterInput {
   id: ID!
-  name: String
-  description: String
+  title: String
+  body: String
+  status: Status
+  s3ImageKey: String
+  teamID: ID
   _version: Int
 }
 
-input DeleteTodoInput {
+input DeleteTaskmasterInput {
   id: ID!
   _version: Int
 }
 
 type Mutation {
-  createTodo(input: CreateTodoInput!, condition: ModelTodoConditionInput): Todo
-  updateTodo(input: UpdateTodoInput!, condition: ModelTodoConditionInput): Todo
-  deleteTodo(input: DeleteTodoInput!, condition: ModelTodoConditionInput): Todo
+  createTaskmaster(input: CreateTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
+  updateTaskmaster(input: UpdateTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
+  deleteTaskmaster(input: DeleteTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
+  createTeam(input: CreateTeamInput!, condition: ModelTeamConditionInput): Team
+  updateTeam(input: UpdateTeamInput!, condition: ModelTeamConditionInput): Team
+  deleteTeam(input: DeleteTeamInput!, condition: ModelTeamConditionInput): Team
 }
 
-input ModelTodoConditionInput {
-  name: ModelStringInput
-  description: ModelStringInput
-  and: [ModelTodoConditionInput]
-  or: [ModelTodoConditionInput]
-  not: ModelTodoConditionInput
+input ModelTaskmasterConditionInput {
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelStatusInput
+  s3ImageKey: ModelStringInput
+  teamID: ModelIDInput
+  and: [ModelTaskmasterConditionInput]
+  or: [ModelTaskmasterConditionInput]
+  not: ModelTaskmasterConditionInput
 }
 
 type Subscription {
-  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
-  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
-  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreateTaskmaster: Taskmaster @aws_subscribe(mutations: ["createTaskmaster"])
+  onUpdateTaskmaster: Taskmaster @aws_subscribe(mutations: ["updateTaskmaster"])
+  onDeleteTaskmaster: Taskmaster @aws_subscribe(mutations: ["deleteTaskmaster"])
+  onCreateTeam: Team @aws_subscribe(mutations: ["createTeam"])
+  onUpdateTeam: Team @aws_subscribe(mutations: ["updateTeam"])
+  onDeleteTeam: Team @aws_subscribe(mutations: ["deleteTeam"])
+}
+
+type ModelTeamConnection {
+  items: [Team!]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelTeamFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  and: [ModelTeamFilterInput]
+  or: [ModelTeamFilterInput]
+  not: ModelTeamFilterInput
+}
+
+input CreateTeamInput {
+  id: ID
+  name: String!
+  _version: Int
+}
+
+input UpdateTeamInput {
+  id: ID!
+  name: String
+  _version: Int
+}
+
+input DeleteTeamInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelTeamConditionInput {
+  name: ModelStringInput
+  and: [ModelTeamConditionInput]
+  or: [ModelTeamConditionInput]
+  not: ModelTeamConditionInput
+}
+
+input ModelStringKeyConditionInput {
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: [String]
+  beginsWith: String
 }
