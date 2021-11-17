@@ -1,5 +1,13 @@
-type Todo @model {
+enum Status {
+  NEW
+  COMPLETED
+  IN_PROGRESS
+  NEWVALUE
+}
+
+type Taskmaster @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  description: String
+  title: String!
+  body: String
+  status: Status!
 }

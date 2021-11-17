@@ -1,12 +1,13 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation CreateTaskmaster(
+  $input: CreateTaskmasterInput!
+  $condition: ModelTaskmasterConditionInput
 ) {
-  createTodo(input: $input, condition: $condition) {
+  createTaskmaster(input: $input, condition: $condition) {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt
@@ -14,14 +15,15 @@ mutation CreateTodo(
     updatedAt
   }
 }
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation UpdateTaskmaster(
+  $input: UpdateTaskmasterInput!
+  $condition: ModelTaskmasterConditionInput
 ) {
-  updateTodo(input: $input, condition: $condition) {
+  updateTaskmaster(input: $input, condition: $condition) {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt
@@ -29,14 +31,15 @@ mutation UpdateTodo(
     updatedAt
   }
 }
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
+mutation DeleteTaskmaster(
+  $input: DeleteTaskmasterInput!
+  $condition: ModelTaskmasterConditionInput
 ) {
-  deleteTodo(input: $input, condition: $condition) {
+  deleteTaskmaster(input: $input, condition: $condition) {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt

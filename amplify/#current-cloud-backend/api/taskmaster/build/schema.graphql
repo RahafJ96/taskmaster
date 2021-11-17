@@ -1,7 +1,15 @@
-type Todo {
+enum Status {
+  NEW
+  COMPLETED
+  IN_PROGRESS
+  NEWVALUE
+}
+
+type Taskmaster {
   id: ID!
-  name: String!
-  description: String
+  title: String!
+  body: String
+  status: Status!
   _version: Int!
   _deleted: Boolean
   _lastChangedAt: AWSTimestamp!
@@ -14,8 +22,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelTodoConnection {
-  items: [Todo!]!
+type ModelTaskmasterConnection {
+  items: [Taskmaster!]!
   nextToken: String
   startedAt: AWSTimestamp
 }
@@ -93,13 +101,19 @@ input ModelSizeInput {
   between: [Int]
 }
 
-input ModelTodoFilterInput {
+input ModelStatusInput {
+  eq: Status
+  ne: Status
+}
+
+input ModelTaskmasterFilterInput {
   id: ModelIDInput
-  name: ModelStringInput
-  description: ModelStringInput
-  and: [ModelTodoFilterInput]
-  or: [ModelTodoFilterInput]
-  not: ModelTodoFilterInput
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelStatusInput
+  and: [ModelTaskmasterFilterInput]
+  or: [ModelTaskmasterFilterInput]
+  not: ModelTaskmasterFilterInput
 }
 
 enum ModelAttributeTypes {
@@ -116,46 +130,49 @@ enum ModelAttributeTypes {
 }
 
 type Query {
-  syncTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTodoConnection
-  getTodo(id: ID!): Todo
-  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  syncTaskmasters(filter: ModelTaskmasterFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTaskmasterConnection
+  getTaskmaster(id: ID!): Taskmaster
+  listTaskmasters(filter: ModelTaskmasterFilterInput, limit: Int, nextToken: String): ModelTaskmasterConnection
 }
 
-input CreateTodoInput {
+input CreateTaskmasterInput {
   id: ID
-  name: String!
-  description: String
+  title: String!
+  body: String
+  status: Status!
   _version: Int
 }
 
-input UpdateTodoInput {
+input UpdateTaskmasterInput {
   id: ID!
-  name: String
-  description: String
+  title: String
+  body: String
+  status: Status
   _version: Int
 }
 
-input DeleteTodoInput {
+input DeleteTaskmasterInput {
   id: ID!
   _version: Int
 }
 
 type Mutation {
-  createTodo(input: CreateTodoInput!, condition: ModelTodoConditionInput): Todo
-  updateTodo(input: UpdateTodoInput!, condition: ModelTodoConditionInput): Todo
-  deleteTodo(input: DeleteTodoInput!, condition: ModelTodoConditionInput): Todo
+  createTaskmaster(input: CreateTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
+  updateTaskmaster(input: UpdateTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
+  deleteTaskmaster(input: DeleteTaskmasterInput!, condition: ModelTaskmasterConditionInput): Taskmaster
 }
 
-input ModelTodoConditionInput {
-  name: ModelStringInput
-  description: ModelStringInput
-  and: [ModelTodoConditionInput]
-  or: [ModelTodoConditionInput]
-  not: ModelTodoConditionInput
+input ModelTaskmasterConditionInput {
+  title: ModelStringInput
+  body: ModelStringInput
+  status: ModelStatusInput
+  and: [ModelTaskmasterConditionInput]
+  or: [ModelTaskmasterConditionInput]
+  not: ModelTaskmasterConditionInput
 }
 
 type Subscription {
-  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
-  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
-  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreateTaskmaster: Taskmaster @aws_subscribe(mutations: ["createTaskmaster"])
+  onUpdateTaskmaster: Taskmaster @aws_subscribe(mutations: ["updateTaskmaster"])
+  onDeleteTaskmaster: Taskmaster @aws_subscribe(mutations: ["deleteTaskmaster"])
 }

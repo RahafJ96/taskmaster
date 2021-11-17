@@ -16,7 +16,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "syncTodos",
+                        "name": "syncTaskmasters",
                         "description": null,
                         "args": [
                             {
@@ -24,7 +24,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoFilterInput",
+                                    "name": "ModelTaskmasterFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -62,14 +62,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelTodoConnection",
+                            "name": "ModelTaskmasterConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "getTodo",
+                        "name": "getTaskmaster",
                         "description": null,
                         "args": [
                             {
@@ -89,14 +89,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "listTodos",
+                        "name": "listTaskmasters",
                         "description": null,
                         "args": [
                             {
@@ -104,7 +104,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoFilterInput",
+                                    "name": "ModelTaskmasterFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -132,7 +132,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelTodoConnection",
+                            "name": "ModelTaskmasterConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -146,7 +146,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoFilterInput",
+                "name": "ModelTaskmasterFilterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -161,7 +161,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -171,11 +171,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStatusInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -188,7 +198,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelTaskmasterFilterInput",
                                 "ofType": null
                             }
                         },
@@ -202,7 +212,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoFilterInput",
+                                "name": "ModelTaskmasterFilterInput",
                                 "ofType": null
                             }
                         },
@@ -213,7 +223,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoFilterInput",
+                            "name": "ModelTaskmasterFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -710,6 +720,72 @@
                 "possibleTypes": null
             },
             {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelStatusInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "Status",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "Status",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "Status",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "NEW",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "COMPLETED",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "IN_PROGRESS",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NEWVALUE",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
                 "kind": "SCALAR",
                 "name": "AWSTimestamp",
                 "description": null,
@@ -721,7 +797,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ModelTodoConnection",
+                "name": "ModelTaskmasterConnection",
                 "description": null,
                 "fields": [
                     {
@@ -739,7 +815,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "OBJECT",
-                                        "name": "Todo",
+                                        "name": "Taskmaster",
                                         "ofType": null
                                     }
                                 }
@@ -780,7 +856,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "Todo",
+                "name": "Taskmaster",
                 "description": null,
                 "fields": [
                     {
@@ -800,7 +876,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "args": [],
                         "type": {
@@ -816,13 +892,29 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
                             "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "Status",
+                                "ofType": null
+                            }
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -925,7 +1017,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "createTodo",
+                        "name": "createTaskmaster",
                         "description": null,
                         "args": [
                             {
@@ -936,7 +1028,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "CreateTodoInput",
+                                        "name": "CreateTaskmasterInput",
                                         "ofType": null
                                     }
                                 },
@@ -947,7 +1039,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelTaskmasterConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -955,14 +1047,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateTodo",
+                        "name": "updateTaskmaster",
                         "description": null,
                         "args": [
                             {
@@ -973,7 +1065,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "UpdateTodoInput",
+                                        "name": "UpdateTaskmasterInput",
                                         "ofType": null
                                     }
                                 },
@@ -984,7 +1076,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelTaskmasterConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -992,14 +1084,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteTodo",
+                        "name": "deleteTaskmaster",
                         "description": null,
                         "args": [
                             {
@@ -1010,7 +1102,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "DeleteTodoInput",
+                                        "name": "DeleteTaskmasterInput",
                                         "ofType": null
                                     }
                                 },
@@ -1021,7 +1113,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelTodoConditionInput",
+                                    "name": "ModelTaskmasterConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -1029,7 +1121,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -1043,7 +1135,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateTodoInput",
+                "name": "CreateTaskmasterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1058,7 +1150,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -1072,12 +1164,26 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
                             "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "ENUM",
+                                "name": "Status",
+                                "ofType": null
+                            }
                         },
                         "defaultValue": null
                     },
@@ -1098,12 +1204,12 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelTodoConditionInput",
+                "name": "ModelTaskmasterConditionInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1113,11 +1219,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStatusInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1130,7 +1246,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelTaskmasterConditionInput",
                                 "ofType": null
                             }
                         },
@@ -1144,7 +1260,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelTodoConditionInput",
+                                "name": "ModelTaskmasterConditionInput",
                                 "ofType": null
                             }
                         },
@@ -1155,7 +1271,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelTodoConditionInput",
+                            "name": "ModelTaskmasterConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1167,7 +1283,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateTodoInput",
+                "name": "UpdateTaskmasterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1186,7 +1302,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "name",
+                        "name": "title",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -1196,11 +1312,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "description",
+                        "name": "body",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "status",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "Status",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1222,7 +1348,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteTodoInput",
+                "name": "DeleteTaskmasterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1261,36 +1387,36 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "onCreateTodo",
+                        "name": "onCreateTaskmaster",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onUpdateTodo",
+                        "name": "onUpdateTaskmaster",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onDeleteTodo",
+                        "name": "onDeleteTaskmaster",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Todo",
+                            "name": "Taskmaster",
                             "ofType": null
                         },
                         "isDeprecated": false,

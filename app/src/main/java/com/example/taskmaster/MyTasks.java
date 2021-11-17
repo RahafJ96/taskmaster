@@ -25,14 +25,11 @@ import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Status;
 import com.amplifyframework.datastore.generated.model.Taskmaster;
 import com.amplifyframework.datastore.generated.model.Team;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class MyTasks extends AppCompatActivity {
     private static final String TAG ="MyTasks" ;
-    ChipNavigationBar chipNavigationBar;
     TextView user;
     TextView mail;
     @Override
@@ -51,42 +48,6 @@ public class MyTasks extends AppCompatActivity {
         createTeams();
 
         /**end here**/
-
-        chipNavigationBar=findViewById(R.id.chip);
-        chipNavigationBar.setOnItemSelectedListener(i -> {
-            Log.v("id value => ",i+"");
-
-            switch (i){
-                case R.id.item0:
-                {
-                    Log.v("id => ",i+"");
-
-                    Intent activity1=new Intent(getBaseContext(),MyTasks.class);
-                    startActivity(activity1);
-                }
-
-                case R.id.item1: {
-                    Log.v("id => ",i+"");
-
-                    Intent activity2 = new Intent(getBaseContext(), AddTask.class);
-                    startActivity(activity2);
-                }
-
-                case R.id.item2: {
-                    Log.v("id => ",i+"");
-
-                    Intent activity3 = new Intent(getBaseContext(), Settings.class);
-                    startActivity(activity3);
-                }
-
-                case R.id.item3: {
-                    Log.v("id => ",i+"");
-
-                    Intent activity4 = new Intent(getBaseContext(), AddTask.class);
-                    startActivity(activity4);
-                }
-            }
-        });
 
     }
 
