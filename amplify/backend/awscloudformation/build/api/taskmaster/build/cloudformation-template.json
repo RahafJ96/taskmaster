@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "An auto-generated nested stack.",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.3.2\",\"stackType\":\"api-AppSync\",\"metadata\":{}}",
   "Metadata": {},
   "Parameters": {
     "DynamoDBModelTableReadIOPS": {
@@ -187,24 +187,11 @@
             {
               "Ref": "APIKeyExpirationEpoch"
             },
-            1640160820
+            1640202685
           ]
         }
       },
       "Condition": "ShouldCreateAPIKey"
-    },
-    "NoneDataSource": {
-      "Type": "AWS::AppSync::DataSource",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "GraphQLAPI",
-            "ApiId"
-          ]
-        },
-        "Name": "NONE",
-        "Type": "NONE"
-      }
     },
     "GraphQLSchema": {
       "Type": "AWS::AppSync::GraphQLSchema",
@@ -230,7 +217,7 @@
         }
       }
     },
-    "Taskmaster": {
+    "Todo": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
         "Parameters": {
@@ -295,14 +282,13 @@
                 "Ref": "S3DeploymentRootKey"
               },
               "stacks",
-              "Taskmaster.json"
+              "Todo.json"
             ]
           ]
         }
       },
       "DependsOn": [
-        "GraphQLSchema",
-        "NoneDataSource"
+        "GraphQLSchema"
       ]
     },
     "CustomResourcesjson": {
@@ -348,7 +334,7 @@
       "DependsOn": [
         "GraphQLAPI",
         "GraphQLSchema",
-        "Taskmaster"
+        "Todo"
       ]
     }
   },

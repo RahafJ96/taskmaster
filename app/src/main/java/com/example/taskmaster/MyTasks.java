@@ -44,10 +44,8 @@ public class MyTasks extends AppCompatActivity {
         user.setText(username);
         mail.setText(email);
 
-        /**AWS stuff**/
+    // AWS
         createTeams();
-
-        /**end here**/
 
     }
 
