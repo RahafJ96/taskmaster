@@ -8,5 +8,10 @@
     "configLevel": "project",
     "useProfile": false,
     "awsConfigFilePath": "/home/rahafj96/.amplify/awscloudformation/1NV5cuGwz2"
+  },
+  "devnew": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/home/rahafj96/.amplify/awscloudformation/WmPnWHxzlA"
   }
 }

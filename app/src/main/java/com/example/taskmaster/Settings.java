@@ -24,13 +24,11 @@ import android.widget.Toolbar;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Team;
-import com.example.asac_test.ui.auth.SignUp;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.example.taskmaster.ui.auth.SignUp;
 
 import java.util.ArrayList;
 
 public class Settings extends AppCompatActivity {
-    ChipNavigationBar chipNavigationBar;
     Spinner spinner ;
     ArrayList<String> allTeams=new ArrayList<>();
     String team="";
@@ -38,45 +36,17 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_page);
+        setContentView(R.layout.activity_settings);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setTitle(getTitle());
-        chipNavigationBar=findViewById(R.id.chip);
-        chipNavigationBar.setOnItemSelectedListener(i -> {
-            Log.v("id => ",i+"");
-            Log.v("id value => ",R.id.item2+"");
-
-            switch (i){
-                case R.id.item0:
-                {
-                    Intent activity1=new Intent(getBaseContext(),MyTasks.class);
-                    startActivity(activity1);
-                }
-
-                case R.id.item1: {
-                    Intent activity2 = new Intent(getBaseContext(), AddTask.class);
-                    startActivity(activity2);
-                }
-
-                case R.id.item2: {
-                    Intent activity3 = new Intent(getBaseContext(), SettingsPage.class);
-                    startActivity(activity3);
-                }
-
-                case R.id.item3: {
-                    Intent activity4 = new Intent(getBaseContext(), AllTasks.class);
-                    startActivity(activity4);
-                }
-            }
-        });
         getTeams();
     }
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
             case android.R.id.home:
-                Intent i=new Intent(SettingsPage.this,AllTasks.class);
+                Intent i=new Intent(Settings.this,AllTasks.class);
                 startActivity(i);
                 Toast.makeText(this,"Back button pressed!",Toast.LENGTH_SHORT).show();
                 return true;
@@ -92,14 +62,14 @@ public class Settings extends AppCompatActivity {
 
 
         if(user.isEmpty() && mail.isEmpty()){
-            Intent i=new Intent(SettingsPage.this,AllTasks.class);
+            Intent i=new Intent(Settings.this,AllTasks.class);
             startActivity(i);
 
             Toast message= Toast.makeText(getBaseContext(),"you should fill both fields first!",Toast.LENGTH_LONG);
             message.show();
         }
         else{
-            Intent i=new Intent(SettingsPage.this,MyTasks.class);
+            Intent i=new Intent(Settings.this,MyTasks.class);
             i.putExtra("username",user);
             i.putExtra("email",mail);
             Toast message= Toast.makeText(getBaseContext(),"you have successfully added to my App as a user!",Toast.LENGTH_LONG);
@@ -157,7 +127,7 @@ public class Settings extends AppCompatActivity {
     public void logout(View view) {
         Amplify.Auth.signOut(
                 () -> {Log.i("AuthQuickstart", "Signed out successfully");
-                    Intent i = new Intent(SettingsPage.this, SignUp.class);
+                    Intent i = new Intent(Settings.this, SignUp.class);
                     startActivity(i);
                 },
                 error -> {

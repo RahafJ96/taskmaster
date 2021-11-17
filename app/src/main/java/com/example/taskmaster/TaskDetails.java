@@ -26,7 +26,7 @@ public class TaskDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_detail_page);
+        setContentView(R.layout.activity_task_details);
         TextView title=(TextView)findViewById(R.id.title);
         TextView bodies=(TextView)findViewById(R.id.text);
         TextView st=(TextView)findViewById(R.id.status);

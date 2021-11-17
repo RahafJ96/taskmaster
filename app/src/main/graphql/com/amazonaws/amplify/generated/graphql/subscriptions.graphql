@@ -1,9 +1,10 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTodo {
-  onCreateTodo {
+subscription OnCreateTaskmaster {
+  onCreateTaskmaster {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt
@@ -11,11 +12,12 @@ subscription OnCreateTodo {
     updatedAt
   }
 }
-subscription OnUpdateTodo {
-  onUpdateTodo {
+subscription OnUpdateTaskmaster {
+  onUpdateTaskmaster {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt
@@ -23,11 +25,12 @@ subscription OnUpdateTodo {
     updatedAt
   }
 }
-subscription OnDeleteTodo {
-  onDeleteTodo {
+subscription OnDeleteTaskmaster {
+  onDeleteTaskmaster {
     id
-    name
-    description
+    title
+    body
+    status
     _version
     _deleted
     _lastChangedAt
