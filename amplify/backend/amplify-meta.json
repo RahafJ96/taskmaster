@@ -32,12 +32,38 @@
         "GraphQLAPIEndpointOutput": "https://r3kmwkqg7jdy3ib4nxz7q7k5zy.appsync-api.eu-central-1.amazonaws.com/graphql",
         "GraphQLAPIKeyOutput": "da2-mrbs2lyj3fga5e5aev3waa52ye"
       },
-      "lastPushTimeStamp": "2021-11-17T21:01:38.293Z",
+      "lastPushTimeStamp": "2021-11-17T22:13:44.514Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-taskmaster-devnew-214949-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apitaskmaster"
       },
-      "lastPushDirHash": "ym2nArtOI+Fqhq55/uSAKh99XhQ="
+      "lastPushDirHash": "w0H8wTDxW1Z4Qdahy3W/82z7URw="
+    }
+  },
+  "auth": {
+    "taskmaster59229f7b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
     }
   }
 }
