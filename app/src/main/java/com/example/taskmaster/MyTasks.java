@@ -45,14 +45,14 @@ public class MyTasks extends AppCompatActivity {
         mail.setText(email);
 
     // AWS
-        createTeams();
+//        createTeams();
 
     }
 
     private void createTeams(){
 
         Team todo1 = Team.builder()
-                .name("Team 1").id("1")
+                .name("Team 1")
                 .build();
 
         Amplify.API.mutate(
@@ -61,7 +61,7 @@ public class MyTasks extends AppCompatActivity {
                 error -> Log.e("MyAmplifyApp", "Create failed", error)
         );
         Team todo2 = Team.builder()
-                .name("Team 2").id("2")
+                .name("Team 2")
                 .build();
 
         Amplify.API.mutate(
@@ -70,7 +70,7 @@ public class MyTasks extends AppCompatActivity {
                 error -> Log.e("MyAmplifyApp", "Create failed", error)
         );
         Team todo3 = Team.builder()
-                .name("Team 3").id("3")
+                .name("Team 3")
                 .build();
 
         Amplify.API.mutate(

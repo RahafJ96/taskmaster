@@ -109,6 +109,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     implementation 'com.amplifyframework:aws-storage-s3:1.28.3'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.28.3'
     implementation 'com.amplifyframework:aws-auth-cognito:1.24.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
