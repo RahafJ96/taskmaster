@@ -70,8 +70,8 @@ public class MainActivity extends OnboarderActivity {
     @Override
     public void onSkipButtonPressed() {
         super.onSkipButtonPressed();
-        Intent i =new Intent(MainActivity.this, SignIn.class);
-        startActivity(i);
+//        Intent i =new Intent(MainActivity.this, SignIn.class);
+//        startActivity(i);
     }
 
     @Override

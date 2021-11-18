@@ -12,5 +12,47 @@
             "ApiKey": "da2-mrbs2lyj3fga5e5aev3waa52ye",
             "ClientDatabasePrefix": "taskmaster_API_KEY"
         }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "eu-central-1:269787bc-07a7-4563-9ec1-c5d88a2805ef",
+                "Region": "eu-central-1"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "eu-central-1_de7myHzGd",
+            "AppClientId": "4c76veqnr61bpcrkt4f07hub01",
+            "Region": "eu-central-1"
+        }
+    },
+    "Auth": {
+        "Default": {
+            "authenticationFlowType": "USER_SRP_AUTH",
+            "socialProviders": [],
+            "usernameAttributes": [],
+            "signupAttributes": [
+                "EMAIL"
+            ],
+            "passwordProtectionSettings": {
+                "passwordPolicyMinLength": 8,
+                "passwordPolicyCharacters": []
+            },
+            "mfaConfiguration": "OFF",
+            "mfaTypes": [
+                "SMS"
+            ],
+            "verificationMechanisms": [
+                "EMAIL"
+            ]
+        }
+    },
+    "S3TransferUtility": {
+        "Default": {
+            "Bucket": "taskmasterstorage214949-devnew",
+            "Region": "eu-central-1"
+        }
     }
 }
