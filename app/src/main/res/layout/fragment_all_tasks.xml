@@ -8,14 +8,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
         <androidx.cardview.widget.CardView
-            android:backgroundTint="@color/purple_200"
-
+            android:backgroundTint="#A1ABE3"
             android:id="@+id/cardView"
             android:layout_width="364dp"
             android:layout_height="200dp"
+            app:layout_constraintHeight="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,82 +27,88 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="176dp"
+                android:background="#A1ABE3">
 
                 <TextView
                     android:id="@+id/body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="20dp"
                     android:text="Body"
-                    android:textColor="@color/purple"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/title"
-                    app:layout_constraintHorizontal_bias="0.288"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.834" />
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="41dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="304dp"
-                    android:text="title"
+                    android:textAlignment="center"
                     android:textColor="@color/purple"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="title"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.708" />
+                    app:layout_constraintVertical_bias="0.416" />
 
                 <TextView
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="28dp"
                     android:text="status"
+                    android:textAlignment="center"
                     android:textColor="@color/purple"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.624" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/body"
+                    app:layout_constraintVertical_bias="0.375" />
 
                 <TextView
                     android:id="@+id/team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="180dp"
                     android:text="team Name"
-                    android:textColor="#5CFFFFFF"
+                    android:textColor="#673AB7"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.033" />
+                    app:layout_constraintVertical_bias="0.027" />
 
                 <ImageView
-                    android:visibility="invisible"
                     android:id="@+id/img"
                     android:layout_width="90dp"
                     android:layout_height="46dp"
                     android:background="@drawable/die_for_music"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.405"
+                    app:layout_constraintHorizontal_bias="0.883"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.233" />
+                    app:layout_constraintVertical_bias="0.155" />
+
                 <TextView
-                    android:visibility="invisible"
                     android:id="@+id/file"
                     android:layout_width="90dp"
                     android:layout_height="46dp"
+                    android:text="file Name"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.405"
+                    app:layout_constraintHorizontal_bias="0.124"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="file Name"
-                    app:layout_constraintVertical_bias="0.233" />
+                    app:layout_constraintVertical_bias="0.155" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
