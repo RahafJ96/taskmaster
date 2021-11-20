@@ -1,6 +1,19 @@
 {
     "UserAgent": "aws-amplify-cli/2.0",
     "Version": "1.0",
+    "analytics": {
+        "plugins": {
+            "awsPinpointAnalyticsPlugin": {
+                "pinpointAnalytics": {
+                    "appId": "14e17407611141d6bce65def718c1579",
+                    "region": "eu-central-1"
+                },
+                "pinpointTargeting": {
+                    "region": "eu-central-1"
+                }
+            }
+        }
+    },
     "api": {
         "plugins": {
             "awsAPIPlugin": {
@@ -70,6 +83,17 @@
                 "S3TransferUtility": {
                     "Default": {
                         "Bucket": "taskmasterstorage214949-devnew",
+                        "Region": "eu-central-1"
+                    }
+                },
+                "PinpointAnalytics": {
+                    "Default": {
+                        "AppId": "14e17407611141d6bce65def718c1579",
+                        "Region": "eu-central-1"
+                    }
+                },
+                "PinpointTargeting": {
+                    "Default": {
                         "Region": "eu-central-1"
                     }
                 }
