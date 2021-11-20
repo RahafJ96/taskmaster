@@ -26,21 +26,12 @@ public class MainActivity extends OnboarderActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        try {
-//            // Add this line to add the AWSApiPlugin plugins
-//            Amplify.addPlugin(new AWSApiPlugin());
-//            Amplify.configure(getApplicationContext());
-//            Log.i("MyAmplifyApp", "Initialized Amplify");
-//        } catch (AmplifyException error) {
-//            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
-//        }
         super.onCreate(savedInstanceState);
         onboarderPages = new ArrayList<OnboarderPage>();
         configureAmplify();
-
         // Create your first page
-        OnboarderPage onboarderPage1 = new OnboarderPage("Manage Your Tasks", "This app will let manage your tasks!",R.drawable.pic2);
-        OnboarderPage onboarderPage2 = new OnboarderPage("Make it fast to add and organize tasks", "Organize all your To-Do's lists. tag them and manage your time!",R.drawable.pic4);
+        OnboarderPage onboarderPage1 = new OnboarderPage("Manage Your Tasks", "Organize all your To-Do's lists. tag them and manage your time!",R.drawable.pic1);
+        OnboarderPage onboarderPage2 = new OnboarderPage("Saving Time and Money", "Time is money: use this advice to get the most from every job you do.",R.drawable.pic2);
 
         // You can define title and description colors (by default white)
         onboarderPage1.setTitleColor(R.color.white);
@@ -69,9 +60,11 @@ public class MainActivity extends OnboarderActivity {
 
     @Override
     public void onSkipButtonPressed() {
+        // Optional: by default it skips onboarder to the end
         super.onSkipButtonPressed();
-//        Intent i =new Intent(MainActivity.this, SignIn.class);
-//        startActivity(i);
+        Intent i =new Intent(MainActivity.this, SignIn.class);
+        startActivity(i);
+        // Define your actions when the user press 'Skip' button
     }
 
     @Override
@@ -80,6 +73,7 @@ public class MainActivity extends OnboarderActivity {
         startActivity(i);    }
     private void configureAmplify() {
         try {
+
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
@@ -96,5 +90,4 @@ public class MainActivity extends OnboarderActivity {
                 () -> Log.i("Tutorial", "Observation complete.")
         );
     }
-
 }

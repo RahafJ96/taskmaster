@@ -7,6 +7,5 @@
   "authAccess": [
     "CREATE_AND_UPDATE"
   ],
-  "triggerFunction": "NONE",
   "groupAccess": {}
 }

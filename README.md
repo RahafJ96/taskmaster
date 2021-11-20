@@ -76,3 +76,38 @@ I created a test to change the name
 - `changeName()`
 
 ![changeName](screenshots/lab31.PNG)
+
+# Lab 32 - Amplify and DynamoDB
+In this lab I implemented AWS amplify to access the data in DynamoDB instead of Room.
+Now when the user add new task in the add task page, The task will store in the DynamoDb.
+
+![lab32](screenshots/lab32.PNG)
+![lab32](screenshots/lab32B.PNG)
+
+AWS DynamoDB
+![lab32C](screenshots/lab33.PNG)
+
+# Lab 33 - Related Data
+![lab32](screenshots/lab32.PNG)
+![lab32](screenshots/lab32B.PNG)
+
+# Lab 34 - Publishing to the Play Store
+This lab is about generate an APK for the application and publishing it to the Google Play Store.
+- [APK file](xx)
+- Will be publish soon
+
+# Lab 36 - Cognito
+![lab36C](screenshots/lab36D.PNG)
+![lab36A](screenshots/lab36A.PNG)
+![lab36B](screenshots/lab36B.PNG)
+![lab36C](screenshots/lab36c.PNG)
+
+
+# Lab 37 - S3
+![lab37A](screenshots/lab37A.PNG)
+![lab37B](screenshots/lab37B.PNG)
+
+# Lab 38 - Notifications
+
+# Lab 39 - Review
+
