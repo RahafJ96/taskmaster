@@ -54,5 +54,16 @@
             "Bucket": "taskmasterstorage214949-devnew",
             "Region": "eu-central-1"
         }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "14e17407611141d6bce65def718c1579",
+            "Region": "eu-central-1"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "eu-central-1"
+        }
     }
 }

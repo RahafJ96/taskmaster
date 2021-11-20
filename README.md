@@ -109,6 +109,8 @@ This lab is about generate an APK for the application and publishing it to the G
 ![s3](screenshots/s3.PNG)
 
 # Lab 38 - Notifications
+![lab38A](screenshots/lab38.PNG)
+![lab38B](screenshots/lab38B.PNG)
 
 # Lab 39 - Review
 
