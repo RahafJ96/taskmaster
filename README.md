@@ -106,6 +106,7 @@ This lab is about generate an APK for the application and publishing it to the G
 # Lab 37 - S3
 ![lab37A](screenshots/lab37A.PNG)
 ![lab37B](screenshots/lab37B.PNG)
+![s3](screenshots/s3.PNG)
 
 # Lab 38 - Notifications
 
