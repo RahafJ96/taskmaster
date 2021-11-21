@@ -51,10 +51,10 @@ public class MainActivity extends OnboarderActivity {
         super.onCreate(savedInstanceState);
         onboarderPages = new ArrayList<OnboarderPage>();
         // Initialize PinpointManager
-        sendAnalytic();
+        //sendAnalytic();
         getPinpointManager(getApplicationContext());
 
-        //configureAmplify();
+        configureAmplify();
 
         // Create your first page
         OnboarderPage onboarderPage1 = new OnboarderPage("Manage Your Tasks", "Organize all your To-Do's lists. tag them and manage your time!",R.drawable.pic1);
