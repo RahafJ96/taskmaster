@@ -113,4 +113,5 @@ This lab is about generate an APK for the application and publishing it to the G
 ![lab38B](screenshots/lab38B.PNG)
 
 # Lab 39 - Review
+![lab39](screenshots/lab39.PNG)
 

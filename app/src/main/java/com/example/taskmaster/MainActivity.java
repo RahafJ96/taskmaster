@@ -54,7 +54,7 @@ public class MainActivity extends OnboarderActivity {
         getPinpointManager(getApplicationContext());
 
         configureAmplify();
-       // sendAnalytic();
+        sendAnalytic();
         // Create your first page
         OnboarderPage onboarderPage1 = new OnboarderPage("Manage Your Tasks", "Organize all your To-Do's lists. tag them and manage your time!",R.drawable.pic1);
         OnboarderPage onboarderPage2 = new OnboarderPage("Saving Time and Money", "Time is money: use this advice to get the most from every job you do.",R.drawable.pic2);
@@ -93,7 +93,7 @@ public class MainActivity extends OnboarderActivity {
         // Define your actions when the user press 'Skip' button
     }
 
-    public static void sendAnalytic(){
+    public static void sendAnalytic() {
         AnalyticsEvent event = AnalyticsEvent.builder()
                 .name("PasswordReset")
                 .addProperty("Channel", "SMS")
@@ -101,7 +101,6 @@ public class MainActivity extends OnboarderActivity {
                 .addProperty("ProcessDuration", 792)
                 .addProperty("UserAge", 120.3)
                 .build();
-
         Amplify.Analytics.recordEvent(event);
     }
 
