@@ -69,13 +69,14 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
     String name="";
 
     //    SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "com.example.asac_test" ;
+    public static final String MyPREFERENCES = "com.example.taskmaster" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        MainActivity.sendAnalytic();
+        //MainActivity.sendAnalytic();
         //To have the back button!!
+        addImage();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         radioGroup = (RadioGroup) findViewById(R.id.radio);
@@ -104,6 +105,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         getTeams();
 
     }
+
 
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -331,6 +333,23 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
             editor.putString("file", ImgName+"."+extension); // Storing string
             editor.commit();
 
+        }
+    }
+
+    public void addImage () {
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        ImageView sharedImage = findViewById(R.id.shareImage);
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("sharedImage/")) {
+                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (imageUri != null) {
+                    sharedImage.setImageURI(imageUri);
+                    sharedImage.setVisibility(View.VISIBLE);
+                }
+            }
         }
     }
 

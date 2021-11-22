@@ -16,6 +16,13 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+        <receiver
+            android:name="com.amazonaws.mobileconnectors.pinpoint.targeting.notification.PinpointNotificationReceiver" android:exported="false" >
+            <intent-filter>
+                <action android:name="com.amazonaws.intent.fcm.NOTIFICATION_OPEN" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".ui.auth.Verfication"></activity>
         <activity android:name=".ui.auth.SignUp" />
         <activity android:name=".ui.auth.SignIn" />

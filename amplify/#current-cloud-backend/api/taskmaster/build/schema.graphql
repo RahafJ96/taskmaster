@@ -22,6 +22,7 @@ type Taskmaster {
 type Team {
   id: ID!
   name: String!
+  users: [String]
   tasks(title: ModelStringKeyConditionInput, filter: ModelTaskmasterFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTaskmasterConnection
   _version: Int!
   _deleted: Boolean
@@ -216,6 +217,7 @@ type ModelTeamConnection {
 input ModelTeamFilterInput {
   id: ModelIDInput
   name: ModelStringInput
+  users: ModelStringInput
   and: [ModelTeamFilterInput]
   or: [ModelTeamFilterInput]
   not: ModelTeamFilterInput
@@ -224,12 +226,14 @@ input ModelTeamFilterInput {
 input CreateTeamInput {
   id: ID
   name: String!
+  users: [String]
   _version: Int
 }
 
 input UpdateTeamInput {
   id: ID!
   name: String
+  users: [String]
   _version: Int
 }
 
@@ -240,6 +244,7 @@ input DeleteTeamInput {
 
 input ModelTeamConditionInput {
   name: ModelStringInput
+  users: ModelStringInput
   and: [ModelTeamConditionInput]
   or: [ModelTeamConditionInput]
   not: ModelTeamConditionInput
