@@ -69,7 +69,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
     String name="";
 
     //    SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "com.example.asac_test" ;
+    public static final String MyPREFERENCES = "com.example.taskmaster" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
