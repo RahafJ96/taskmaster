@@ -1,5 +1,4 @@
 package com.example.taskmaster.ui.auth;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

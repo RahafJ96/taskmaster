@@ -8,54 +8,58 @@
     android:background="@color/purple"
     tools:context=".AllTasks">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Your Tasks"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="336dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/tasks"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="376dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="72dp"
-        android:src="@drawable/tasks"
-        app:layout_constraintBottom_toTopOf="@+id/recTask"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recTask"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginBottom="88dp"
-        android:background="@color/yellow"
-        app:layout_constraintBottom_toTopOf="@+id/counter"
+        android:layout_height="200dp"
+
+
+        android:background="#FDEF70"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintVertical_bias="0.224" />
 
     <TextView
-        android:id="@+id/counter"
-        android:layout_width="64dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="44dp"
-        android:text="Total"
-        android:textAlignment="center"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Tasks"
+        android:textColor="@color/white"
+        android:textFontWeight="@integer/material_motion_duration_medium_1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.303" />
+
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="405dp"
+        android:layout_height="46dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

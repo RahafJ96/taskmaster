@@ -42,8 +42,6 @@ public class AllTasks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
-        //MainActivity.sendAnalytic();
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -127,7 +125,7 @@ public class AllTasks extends AppCompatActivity {
                     error -> Log.e("MyAmplifyApp", "Query failure", error)
             );
         } else {
-            Log.v("inside else =>",settingsTeamID);
+            Log.v("inside elese =>",settingsTeamID);
             Amplify.API.query(
                     ModelQuery.list(Taskmaster.class, Taskmaster.TEAM_ID.contains(settingsTeamID)),
                     response -> {
