@@ -15,13 +15,10 @@ public class TaskEntity {
 
     @ColumnInfo(name = "status")
     public String status;
-
     @ColumnInfo(name = "team")
     public String team;
-
     @ColumnInfo(name = "file")
     public String file;
-
     public TaskEntity(String title, String body, String status,String team,String file) {
         this.title = title;
         this.body = body;

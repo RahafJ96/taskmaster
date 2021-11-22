@@ -1,6 +1,7 @@
 package com.amplifyframework.datastore.generated.model;
 
 import com.amplifyframework.core.model.temporal.Temporal;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.Objects;
@@ -126,10 +127,12 @@ public final class UntitledModel implements Model {
         }
     }
 
+
     public final class CopyOfBuilder extends Builder {
         private CopyOfBuilder(String id) {
             super.id(id);
 
         }
     }
+
 }

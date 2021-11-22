@@ -1,4 +1,5 @@
 package com.example.taskmaster;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -74,6 +75,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
         holder.task = allTasksData.get(position);
+
         TextView body = holder.itemView.findViewById(R.id.body);
         TextView status = holder.itemView.findViewById(R.id.status);
 

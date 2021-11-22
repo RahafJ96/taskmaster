@@ -33,10 +33,12 @@ public class TaskDetails extends AppCompatActivity {
         TextView teamName=(TextView)findViewById(R.id.teamName);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+
             String t = extras.getString("title");
             String body=extras.getString("body");
             String status=extras.getString("status");
             String team=extras.getString("team");
+
             if(bodies!=null){
 
                 if(status.equalsIgnoreCase("completed"))
@@ -75,6 +77,11 @@ public class TaskDetails extends AppCompatActivity {
                     System.out.println("this is bitmap ==> "+fileToDownload.getPath());
                     myimg.setImageBitmap(bitmap);
                     Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName());
+                    result.getFile();
+                    if (result.getFile() != null){
+                        myimg.setImageBitmap(BitmapFactory.decodeFile(result.getFile().getPath()));
+                        result.getFile();
+                    }
                 },
                 error -> Log.e("MyAmplifyApp",  "Download Failure", error)
         );
