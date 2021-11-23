@@ -20,6 +20,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.storage.options.StorageDownloadFileOptions;
 
 import java.io.File;
+import androidx.fragment.app.FragmentContainerView;
 
 public class TaskDetails extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class TaskDetails extends AppCompatActivity {
         TextView st=(TextView)findViewById(R.id.status);
         TextView teamName=(TextView)findViewById(R.id.teamName);
         Bundle extras = getIntent().getExtras();
+        Intent intent = getIntent();
         if (extras != null) {
 
             String t = extras.getString("title");
