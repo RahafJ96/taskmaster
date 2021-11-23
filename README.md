@@ -118,4 +118,4 @@ This lab is about generate an APK for the application and publishing it to the G
 
 # Lab 41 - Intent Filter
 Intent Filter For sharing Is Added.
-![lab41](screenshots/lab41.PNG)
+![lab41](screenshots/lab41.png)

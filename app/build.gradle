@@ -146,4 +146,7 @@ dependencies {
 
     // Add these lines in `dependencies`
     implementation 'com.amplifyframework:aws-analytics-pinpoint:1.29.1'
+
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.0'
 }

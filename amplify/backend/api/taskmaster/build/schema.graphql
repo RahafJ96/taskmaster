@@ -11,6 +11,8 @@ type Taskmaster {
   body: String
   status: Status!
   s3ImageKey: String
+  lat: String
+  lon: String
   teamID: ID!
   _version: Int!
   _deleted: Boolean
@@ -126,6 +128,8 @@ input ModelTaskmasterFilterInput {
   body: ModelStringInput
   status: ModelStatusInput
   s3ImageKey: ModelStringInput
+  lat: ModelStringInput
+  lon: ModelStringInput
   teamID: ModelIDInput
   and: [ModelTaskmasterFilterInput]
   or: [ModelTaskmasterFilterInput]
@@ -160,6 +164,8 @@ input CreateTaskmasterInput {
   body: String
   status: Status!
   s3ImageKey: String
+  lat: String
+  lon: String
   teamID: ID!
   _version: Int
 }
@@ -170,6 +176,8 @@ input UpdateTaskmasterInput {
   body: String
   status: Status
   s3ImageKey: String
+  lat: String
+  lon: String
   teamID: ID
   _version: Int
 }
@@ -193,6 +201,8 @@ input ModelTaskmasterConditionInput {
   body: ModelStringInput
   status: ModelStatusInput
   s3ImageKey: ModelStringInput
+  lat: ModelStringInput
+  lon: ModelStringInput
   teamID: ModelIDInput
   and: [ModelTaskmasterConditionInput]
   or: [ModelTaskmasterConditionInput]
